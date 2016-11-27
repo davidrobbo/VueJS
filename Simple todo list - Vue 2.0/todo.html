@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by davidrobbo (http://jsbin.com/rocuxom/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/todo.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="container" id="todo">
+    
+    <section class="panel">
+      <input type="checkbox" id="mark-all" v-bind:checked="areAllSelected" v-on:click="selectAll"/>
+      <input v-on:keyup.enter="addTask" v-model="newTask" type="text" placeholder="What do you need to do?" autofocus class="text-input">
+      <button v-on:click="clearList">Clear List</button>
+    </section>
+    
+    <ul class="list">
+      <li v-for="task in taskList" v-bind:class="{done: task.checked}">
+   
+        <input type="checkbox" class="checkbox" v-model="task.checked">
+        <label for="checkbox">{{ task.text }}</label>
+        <button class="delete" v-on:click="removeTask(task)">X</button>
+  
+      </li>
+    </ul>  
+  </div>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+<script src="/todo.js"></script>
+</body>
+</html>
